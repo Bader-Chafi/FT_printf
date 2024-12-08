@@ -6,7 +6,7 @@
 /*   By: bchafi <bchafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 00:09:39 by bchafi            #+#    #+#             */
-/*   Updated: 2024/12/08 02:27:01 by bchafi           ###   ########.fr       */
+/*   Updated: 2024/12/08 02:48:45 by bchafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	ft_hexadecimal(unsigned int num, char buffer)
 	return (count);
 }
 
-int	ft_address(unsigned long num)
+int	ft_hexa_address(unsigned long num)
 {
 	char	*base;
 	char	hex;
@@ -89,7 +89,7 @@ int	ft_address(unsigned long num)
 	if (num == 0)
 		return (ft_putchr('0'), 1);
 	if (num >= 16)
-		count += ft_address(num / 16);
+		count += ft_hexa_address(num / 16);
 	hex = base[num % 16];
 	count += ft_putchr(hex);
 	return (count);

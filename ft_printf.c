@@ -6,11 +6,22 @@
 /*   By: bchafi <bchafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:09:46 by bchafi            #+#    #+#             */
-/*   Updated: 2024/12/08 02:27:20 by bchafi           ###   ########.fr       */
+/*   Updated: 2024/12/08 02:51:40 by bchafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_unsigned(unsigned int num)
+{
+	int	count;
+
+	count = 0;
+	if (num > 9)
+		count += ft_unsigned(num / 10);
+	ft_putchr((num % 10) + '0');
+	return (count + 1);
+}
 
 static int	ft_ayero(const char *format, va_list args)
 {
@@ -23,31 +34,18 @@ static int	ft_ayero(const char *format, va_list args)
 		count += ft_putstr(va_arg(args, char *));
 	else if (*format == 'd' || *format == 'i')
 		count += ft_putnbr(va_arg(args, int));
-	else if (*format == 'x')
-		count += ft_hexadicimal(va_arg(args, unsigned int), *format);
-	else if (*format == 'X')
-		count += ft_hexadicimal(va_arg(args, unsigned int), *format);
+	else if (*format == 'x' || *format == 'X')
+		count += ft_hexadecimal(va_arg(args, unsigned int), *format);
 	else if (*format == 'u')
 		count += ft_unsigned(va_arg(args, unsigned int));
 	else if (*format == 'p')
 	{
 		count += ft_putstr("0x");
-		count += ft_address(va_arg(args, unsigned long));
+		count += ft_hexa_address(va_arg(args, unsigned long));
 	}
 	else if (*format == '%')
 		count += ft_putchr(*format);
 	return (count);
-}
-
-int	ft_unsigned(unsigned int num)
-{
-	int	count;
-
-	count = 0;
-	if (num >= 16)
-		count += ft_unsigned(num / 16);
-	ft_putchr((num % 16) + '0');
-	return (count + 1);
 }
 
 int	ft_printf(const char *format, ...)
