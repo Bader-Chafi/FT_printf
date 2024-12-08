@@ -1,12 +1,12 @@
-NAME = ft_printf.a
+NAME = libftprintf.a
 HEADER = ft_printf.h
 CC = cc
 AR = ar -rc
 CFLAGS = -Wall -Wextra -Werror
 
 SOURCES = \
-	ft_printf.c ft_putchr.c ft_putnbr.c \
-	ft_putstr.c ft_ayero.c ft_hexadicimal.c
+	ft_printf.c \
+	ft_printf_utils.c
 	
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -25,5 +25,3 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

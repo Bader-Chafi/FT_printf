@@ -6,7 +6,7 @@
 /*   By: bchafi <bchafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:09:36 by bchafi            #+#    #+#             */
-/*   Updated: 2024/12/03 00:31:01 by bchafi           ###   ########.fr       */
+/*   Updated: 2024/12/08 02:30:59 by bchafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int ft_printf(const char *format, ...);
-int ft_putchr(int c);
-int ft_putnbr(int n);
-int ft_putstr(const char *str);
-void ft_ayero(const char *format, int count, va_list args);
-int ft_hexadicimal(unsigned int num, char buffer);
+int	ft_printf(const char *format, ...);
+int	ft_putchr(int c);
+int	ft_putnbr(int n);
+int	ft_putstr(const char *str);
+int	ft_hexadecimal(unsigned int num, char buffer);
+int	ft_hexadecimal_address(unsigned long num);
+int	ft_unsigned(unsigned int num);
 
 #endif
